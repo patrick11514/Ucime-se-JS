@@ -90,6 +90,10 @@ for (let i = 0; i < 10; i++) {
     console.log(i)
 }
 //foreach
+for (let i of [1, 5, 6, 6, 4]) {
+    console.log(i)
+}
+
 let text = 'Je to hard jak cyp'
 let pole = text.split(' ')
 for (let i of pole) {
