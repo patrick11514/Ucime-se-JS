@@ -1,9 +1,9 @@
 /**
- * @type HTMLInputElement | undefined
+ * @type HTMLInputElement | null
  */
-const display = document.querySelector('#display')
+const display = document.getElementById('display')
 
-const mapping = {
+const dictionary = {
     leftBracket: '(',
     rightBracket: ')',
     '+': '+',
@@ -12,9 +12,9 @@ const mapping = {
     '*': '*',
     dot: '.',
     0: 0,
-    1: 1,
-    2: 2,
-    3: 3,
+    1: 2,
+    3: 1,
+    2: 3,
     4: 4,
     5: 5,
     6: 6,
@@ -23,7 +23,7 @@ const mapping = {
     9: 9
 }
 
-for (const data of Object.entries(mapping)) {
+for (const data of Object.entries(dictionary)) {
     const id = data[0]
     const value = data[1]
 
@@ -33,23 +33,21 @@ for (const data of Object.entries(mapping)) {
     })
 }
 
-const removeButton = document.getElementById('backslash')
-removeButton.addEventListener('click', () => {
-    const val = display.value
-    display.value = val.substring(0, val.length - 1)
-})
-
 const resetButton = document.getElementById('reset')
-resetButton.addEventListener('click', () => {
+resetButton.addEventListener('click', function () {
     display.value = ''
 })
 
-const solveButton = document.getElementById('=')
+const removeButton = document.getElementById('backslash')
+removeButton.addEventListener('click', function () {
+    display.value = display.value.substring(0, display.value.length - 1)
+})
 
-solveButton.addEventListener('click', function () {
+const equalsButton = document.getElementById('=')
+equalsButton.addEventListener('click', function () {
     try {
         display.value = eval(display.value)
     } catch (_) {
-        alert('Sytax error')
+        alert('Syntax error')
     }
 })
