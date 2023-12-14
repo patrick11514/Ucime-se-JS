@@ -62,7 +62,7 @@
 ## Podmínky
 
 -   If - else if - else
--   Switch - case - default
+-   Switch - case - default, jeden scope pro celý switch
 -   Ternární operátor - podmínka ? true : false
 -   zkrácení pro if - else
 
@@ -73,3 +73,74 @@
 -   For - In -> foreach ale na indexech, lze použít i na objektu
 -   While
 -   Do - while
+
+## Úkoly
+
+### Úkol 1
+
+Vytvořit mini kalkulačku, kdy budu mít tři konstanty a jednu scoped proměnnou, do konstat, uložím číslo a, číslo b a znaménko "+", "-", "\*", "/", "%" a poté do scoped proměnné se uloží výsledek počítání a přes console.log se vypíše
+
+Výsledek:
+
+```JS
+const a = 5;
+const b = 6;
+const znamenko = "+";
+let vysledek;
+
+switch (znamenko) {
+    case "+":
+        vysledek = a + b;
+        break;
+    case "-":
+        vysledek = a - b;
+        break;
+    case "*":
+        vysledek = a * b;
+        break;
+    case "/":
+        vysledek = a / b;
+        break;
+    case "%":
+        vysledek = a % b;
+        break;
+    default:
+        vysledek = "Neplatne znamenko";
+        break;
+}
+
+console.log(vysledek);
+```
+
+V typescriptu:
+
+```TS
+type Znamenko = "+" | "-" | "*" | "/" | "%";
+const a: number = 5;
+const b: number = 6;
+const znamenko: Znamenko = "+";
+let vysledek: number | string;
+
+switch (znamenko) {
+    case "+":
+        vysledek = a + b;
+        break;
+    case "-":
+        vysledek = a - b;
+        break;
+    case "*":
+        vysledek = a * b;
+        break;
+    case "/":
+        vysledek = a / b;
+        break;
+    case "%":
+        vysledek = a % b;
+        break;
+    default:
+        vysledek = "Neplatne znamenko";
+        break;
+}
+
+console.log(vysledek);
+```
