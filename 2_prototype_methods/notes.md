@@ -1,3 +1,15 @@
+## Opakování
+
+-   Udělám si pole ovoce
+
+```JS
+const ovoce = ['Jablko', 'Hruška', 'Třešeň']
+```
+
+-   Projít toto pole přes for, foreach a for in
+
+-   Dále udělat while cyklus čísel od -12 do 5 (včetně) a vypsat jejich druhou mocninu
+
 ## Funkce
 
 -   funkce je nějaký způsob pojmenování nějaké části kódu, kterou chceme použít vícekrát

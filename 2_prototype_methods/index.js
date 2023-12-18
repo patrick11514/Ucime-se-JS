@@ -1,3 +1,30 @@
+//Opakování
+//Udělám si pole ovoce
+const ovoce = ['Jablko', 'Hruška', 'Třešeň']
+
+//for
+for (let i = 0; i < ovoce.length; i++) {
+    console.log(ovoce[i])
+}
+
+//foreach
+for (const jednoOvoce of ovoce) {
+    console.log(jednoOvoce)
+}
+
+//for in
+for (const i in ovoce) {
+    console.log(ovoce[i])
+}
+
+//while cyklus čísel od -12 do 5 a vypsat jejich druhou mocninu
+let i = -12
+
+while (i <= 5) {
+    console.log(i * i)
+    i++
+}
+
 /*function recursion(index) {
     console.log(index)
     if (index > 0) {
