@@ -1,387 +1,226 @@
-//opakovani
-{
-    let pepa = 10
+const ovoce = ['Jablko', 'Hruška', 'Třešeň']
 
-    console.log(pepa)
-    const pole = ['Patrik', 'Honza', 'Karel', 'Pepík']
-
-    const obj = { jmeno: 'Patrik', vyska: 193, vek: 20 }
-
-    console.log(obj.jmeno)
-    console.log(obj['jmeno'])
-
-    for (let i = 0; i < pole.length; i++) {
-        console.log(pole[i])
-    }
-
-    for (let index in obj) {
-        console.log(obj[index])
-    }
-
-    for (let jmeno of pole) {
-        console.log(jmeno)
-    }
-
-    for (let i = 0; i < pole.length; i++) {
-        let jmeno = pole[i]
-        console.log(jmeno)
-    }
+for (let i = 0; i < ovoce.length; i++) {
+    console.log(ovoce[i])
 }
 
-let c = 10
-let vc = 5
-let vysledek = (c * vc) / 2
-
-console.log(vysledek)
-
-c = 20
-vc = 10
-vysledek = (c * vc) / 2
-
-console.log(vysledek)
-
-c = 30
-vc = 15
-vysledek = (c * vc) / 2
-
-console.log(vysledek)
-
-function obsahTrojiuhelniku(c, vc) {
-    return (c * vc) / 2
+for (const item of ovoce) {
+    console.log(item)
 }
 
-const obsahTrojiuhelniku2 = (c, vc) => {
-    return (c * vc) / 2
+for (const item of ovoce) {
+    console.log(item)
 }
 
-let obsah1 = obsahTrojiuhelniku(10, 5)
-let obsah2 = obsahTrojiuhelniku2(20, 10)
-let obsah3 = obsahTrojiuhelniku2(30, 15)
-
-console.log(obsah1, obsah2, obsah3)
-
-function vypocetObdelniku(a, b) {
-    return a * b
+for (const index in ovoce) {
+    console.log(ovoce[index])
 }
 
-let novaFunkce = vypocetObdelniku
+//ctverec
 
-let vys = novaFunkce(10, 20)
-console.log(vys)
-
-function sectiCisla(a, b) {
-    return a + b
+function vypoctiObsah(a) {
+    const vysledek = a * a
+    return vysledek
 }
 
-function odectiCisla(a, b) {
-    return a - b
+function vypoctiObjem(podstava, vyska) {
+    return podstava * vyska
 }
 
-function provedOperaci(funkce, a, b) {
-    return funkce(a, b)
+const stranaA = 10
+
+const objem = vypoctiObjem(vypoctiObsah(stranaA), 10)
+
+console.log(objem)
+
+const a = function () {
+    console.log('Ahoj')
 }
 
-console.log(provedOperaci(sectiCisla, 10, 5))
+const b = () => {}
 
-function RekniAhoj(jmeno) {
-    console.log(`Ahoj ${jmeno}`)
+function pozdrav(slovo, jmeno) {
+    console.log(`${slovo()} ${jmeno}`)
 }
 
-function RekniCau(jmeno) {
-    console.log(`Cau ${jmeno}`)
+function Ahoj() {
+    return 'Ahoj'
 }
 
-const nejakaFunkce = function () {
-    console.log('aaaa')
+function Cau() {
+    return 'Cau'
 }
 
-nejakaFunkce()
+pozdrav(Cau, 'Patriku')
 
-function Pozdrav(pozdravovaciFunkce, jmeno) {
-    pozdravovaciFunkce(jmeno)
+//function pocitejDoNuly(n) {
+//    console.log(n)
+//    pocitejDoNuly(n + 1)
+//}
+//
+//pocitejDoNuly(1)
+
+const text = 'Ahoj'
+
+console.log(text.length)
+
+console.log(text[0])
+
+console.log(text.charAt(2))
+
+///////////////0123456789
+const text2 = 'Ahoj pepo pepo'
+
+console.log(text2.replace('pepo', 'karle'))
+
+console.log(text2.replaceAll('pepo', 'karle'))
+
+console.log(text2.toLocaleLowerCase())
+console.log(text2.toLocaleUpperCase())
+
+const text3 = '       Ahoj      baf     lek    neco    '
+
+console.log(text3.trim())
+console.log(text3.trimStart())
+console.log(text3.trimEnd())
+
+console.log(text2.split(' '))
+console.log(text2.split(' ', 2))
+
+console.log(text2.substring(2))
+console.log(text2.substring(2, 5))
+
+console.log(text2.substr(2))
+console.log(text2.substr(2, 5))
+
+console.log(text2.slice(2))
+console.log(text2.slice(2, 5))
+
+console.log(text2.slice(-5))
+console.log(text2.substring(-5))
+
+console.log(text2.startsWith('Ahoj'))
+console.log(text2.startsWith('pepo'))
+
+console.log(text2.endsWith('Ahoj'))
+console.log(text2.endsWith('pepo'))
+
+let array = ['123456', 15641561, true, false]
+
+console.log(array.length)
+
+array.push(10)
+console.log(array)
+
+console.log(array.pop())
+console.log(array)
+
+array.unshift(10)
+console.log(array)
+
+console.log(array.shift())
+console.log(array)
+
+console.log(array.slice(1, 3))
+console.log(array)
+
+console.log(array.splice(1, 2))
+console.log(array)
+
+array = ['123456', 15641561, true, false]
+
+console.log(array.splice(1, 2, 'Dalsi prvek'))
+console.log(array)
+
+array = ['123456', 15641561, true, false]
+
+console.log(array.splice(1, 2, 'Pepa', 'Karel', 'Honza', 'Atd'))
+console.log(array)
+
+array = ['123456', 15641561, true, false]
+
+console.log(array.toSpliced(1, 2))
+console.log(array)
+
+console.log(array.reverse())
+console.log(array)
+
+console.log(array.toReversed())
+console.log(array)
+
+const array2 = ['ahoj', 123, ['neco', true, ['bla'], false], 485456]
+
+console.log(array2.flat(2))
+console.log(array2)
+
+const array3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+function jeCisloSude(n) {
+    return n % 2 == 0
 }
 
-Pozdrav(function (jmeno) {
-    console.log(`Dobrý den, ${jmeno}`)
-}, 'Pepo')
+console.log(array3.find(jeCisloSude))
 
-Pozdrav((jmeno) => {
-    console.log(`Dobrý den, ${jmeno}`)
-}, 'Pepo')
-
-//metody
-const text = 'Kráva dělá bů'
-let delka = text.length
-console.log(delka)
-
-//indexováni
-console.log(text[1])
-console.log(text.charAt(1))
-console.log(text.replace('Kráva', 'Koza').replace('bů', 'méé'))
-
-console.log('Ahoj Ahoj, Pepo'.replace('Ahoj', 'Čau'))
-console.log('Ahoj Ahoj, Pepo'.replaceAll('Ahoj', 'Čau'))
-
-console.log(text.toLowerCase())
-console.log(text.toUpperCase())
-
-const zadanyText = '        PIN KE KARTĚ     '
-console.log(zadanyText.trim())
-console.log(zadanyText.trimStart())
-console.log(zadanyText.trimEnd())
-
-{
-    const nákupníSeznam = 'Jahody, Mrvke, Jogurt'
-    let pole = nákupníSeznam.split(', ', 2)
-    console.log(pole)
-}
-const viceRadkovyText = `Prvni radek
-Druhy Radek
-Treti Radek`
-
-console.log(viceRadkovyText.split('\n'))
-
-const nejakyText = 'Toto je nejaky text'
-
-console.log(nejakyText.substring(2))
-console.log(nejakyText.substring(2, 4))
-console.log(nejakyText.substring(-5))
-console.log(nejakyText.substr(2, 4))
-console.log(nejakyText.substr(3, 4))
-console.log(nejakyText.slice(2))
-console.log(nejakyText.slice(2, 4))
-console.log(nejakyText.slice(-5))
-console.log('Ahoj, jak se mas'.startsWith('Ahoj'))
-console.log('Cau, jak se mas'.startsWith('Ahoj'))
-console.log('Ahoj, jak se mas'.endsWith('mas'))
-console.log('Cau, jak se mam'.endsWith('mas'))
-
-//metody nad polem
-let pole1 = [1, 2, 3]
-console.log(pole1.length)
-console.log(pole1.push(4))
-console.log(pole1)
-
-let pole2 = [1, 2, 66666]
-console.log(pole2)
-console.log(pole2.pop())
-console.log(pole2)
-
-const names = ['Honza', 'Pepa', 'Karel']
-const stack = []
-
-for (const name of names) {
-    stack.push(name)
-}
-
-console.log(stack)
-
-const length = stack.length
-
-for (let i = 0; i < length; i++) {
-    console.log(stack.pop())
-}
-
-let pole3 = [1, 2, 3]
-console.log(pole3)
-console.log(pole3.unshift(4))
-console.log(pole3)
-
-let pole4 = [1, 2, 3]
-console.log(pole4)
-console.log(pole4.shift())
-console.log(pole4)
-
-let pole5 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-console.log(pole5)
-console.log(pole5.slice(-5))
-console.log(pole5)
-
-let pole6 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-console.log(pole6)
-console.log(pole6.splice(6, 2))
-console.log(pole6)
-
-let pole7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-console.log(pole7)
-console.log(pole7.splice(6, 2, 66, 12, 44))
-console.log(pole7)
-
-let pole8 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-console.log(pole8)
-let poleBez56 = pole8.toSpliced(4, 2)
-console.log(poleBez56)
-console.log(pole8)
-console.log(pole8.toSpliced(6, 2))
-console.log(pole8)
-
-let pole9 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-console.log(pole9)
-pole9.reverse()
-console.log(pole9)
-
-let pole10 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-console.log(pole10)
-console.log(pole10.toReversed())
-console.log(pole10)
-
-let pole11 = [1, 2, [3, 4, 5], [6, [7, 8, 9]], 10]
-console.log(pole11)
-console.log(pole11.flat())
-console.log(pole11.flat(2))
-console.log(pole11)
-
-function findStringWithLength5(current) {
-    if (current.length == '5') {
-        return true
-    } else {
-        return false
-    }
-}
-
-let pole12 = ['Pepa', 'Honza', 'Karel', 'Kyblík']
 console.log(
-    pole12.find((current) => {
-        return current.length == 5
+    array3.find(function (n) {
+        return n % 2 == 0
     })
 )
 
-function find(searchFunction) {
-    for (const current of pole12) {
-        if (searchFunction(current)) {
-            return current
-        }
-    }
-
-    return undefined
-}
-
-console.log(find(findStringWithLength5))
+console.log(array3.find((n) => n % 2 == 0))
 
 console.log(
-    pole12.findIndex((current) => {
-        return current.length == 5
+    array3.find((n) => {
+        return n % 2 == 0
     })
 )
 
-console.log(
-    pole12.filter((current) => {
-        return current.length == 5
-    })
-)
+console.log(array3.findIndex(jeCisloSude))
 
-let pole13 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-console.log(
-    pole13.map((cislo) => {
-        return cislo * 2
-    })
-)
+console.log(array3.filter(jeCisloSude))
+console.log(array3.filter(() => true))
 
-console.log(pole13)
-
-console.log(pole12.includes('Honza'))
-
-console.log(pole13.join(', '))
-
-{
-    const endWord = 'superman'
-    const text = 'Pepa je super ' + endWord
-    const delka = text.length
-    const text2 = text.replace('Pepa', 'Karel')
-    console.log(text2)
-    console.log(text2.substring(0, 5))
-    console.log(text2.substring(15, text2.length))
-    console.log(text2.slice(-1 * endWord.length))
+function druhaMocnina(n) {
+    return n * n
 }
 
-//basic info
+console.log(array3.map(druhaMocnina))
 
-let cislo = 10
-cislo = cislo * 2
-console.log(cislo)
+console.log(array3.includes(6))
+console.log(array3.includes(666))
 
-let pozdrav = 'Ahoj'
-let jmeno = 'Pepo'
-let celyPozdrav = pozdrav + ' ' + jmeno
-celyPozdrav = `${pozdrav} ${jmeno}`
-
-console.log(celyPozdrav)
-
-let pole = [
-    1,
-    2,
-    3,
-    4,
-    'Pepa',
-    'karel',
-    {
-        nick: 'patrick115',
-        health: 20
-    }
-]
-
-{
-    let pole = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-    for (let i = 0; i < pole.length; i++) {
-        const cislo = pole[i]
-        console.log(cislo)
-    }
-
-    for (const cislo of pole) {
-        console.log(cislo)
-    }
-
-    for (let i = 0; i < pole.length; i++) {
-        const cislo = pole[i]
-
-        console.log(cislo)
-    }
-
-    let i = 0
-
-    while (i < pole.length) {
-        const cislo = pole[i]
-
-        console.log(cislo)
-
-        i++
-    }
-}
-
-//Úkol 1
-/**
- * 
-1. Vymyslet funkci, která vypočítá obsah čtverců v poli
-
-Jak budou čtverce zapsané?
-
-```JS
-let čtverce = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-//výpočet ....
-
-console.log(čtverce); // [1, 4, 9, 16, 25, 36, 49, 64, 81]
-```
-
-2. Nyní všechny součty čtverců vypočítat dohromady a uložit do nějaké konstatní proměnné.
-
-2.2. Pomocí cyklu
-2.3. Pomocí funkce `reduce()`
-
-3. Poté vypsat obsah čtverců pomocí funkce `console.log()` do stringu, který bude vypadat takto:
-
-```
-Obsah čtverců čísel 1, 2, 3, 4, 5, 6, 7, 8, 9 je 285.
-```
- */
+console.log(array3.join(' < '))
 
 let čtverce = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-čtverce = čtverce.map((a) => {
-    return a * a
-})
+function naDruhou(n) {
+    return n * n
+}
 
-const soucet = čtverce.reduce((prev, curr) => prev + curr)
+čtverce = čtverce.map(naDruhou)
 
-console.log(`Obsah čtverů čísel ${čtverce.join(', ')} je ${soucet}`)
+console.log(čtverce) // [1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+let soucet = 0
+
+for (const obsah of čtverce) {
+    soucet += obsah
+}
+
+console.log(soucet)
+
+console.log(
+    čtverce.reduce((a, b) => {
+        return a + b
+    })
+)
+
+const array4 = ['Ahoj', 'pepo', 'dneska', 'do', 'skoly', 'neprijdu', 'protoze', 'me', 'boli', 'hlava']
+
+console.log(
+    array4.reduce((a, b) => {
+        console.log(a)
+        console.log(b)
+        return a + ' ' + b
+    })
+)
