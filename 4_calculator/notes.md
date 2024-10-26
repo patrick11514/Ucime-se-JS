@@ -144,3 +144,27 @@ try {
     console.log("Konec")
 }
 ```
+
+# Eval
+
+-   Vykonává JavaScript kód, který je předán jako řetězec
+-   Není doporučeno používat, protože může způsobit bezpečnostní problémy (XSS útoky)
+
+```JS
+const CODE = "console.log('Hello world')"
+
+eval(CODE) // Hello world
+```
+
+```JS
+const CODE = "alert('Hello world')"
+
+eval(CODE) // Hello world
+```
+
+-   Eval dokáže i vrátit hodnotu
+
+```JS
+const OPERATION = "10 + 2"
+console.log(eval(OPERATION)) // 12
+```
