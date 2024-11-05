@@ -7,7 +7,20 @@ export default (l: Logger) => {
     const wss = new WebSocketServer({ port: 5556 });
 
     wss.on('connection', (client) => {
-        console.log(client);
+        client.on('message', (data) => {
+            const str = data.toString('utf8');
+            if (str === '/end') return client.close();
+
+            client.send(str);
+        });
+
+        setTimeout(() => {
+            client.send('==============================================');
+            client.send('Welcome to my Echo WebSocketServer.');
+            client.send('Send something, and I will send it back');
+            client.send('Send text /end and I will end connection with you');
+            client.send('==============================================');
+        }, 100);
     });
 
     wss.on('listening', () => {
