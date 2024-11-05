@@ -25,15 +25,17 @@ export default (l: Logger) => {
     app.use(express.json());
     app.use(express.urlencoded());
 
-    app.get('/', (_, res) => {
+    const apiRouter = express.Router();
+
+    apiRouter.get('/', (_, res) => {
         res.send('Hello ^^');
     });
 
-    app.get('/hello', (_, res) => {
+    apiRouter.get('/hello', (_, res) => {
         res.send('Hello from my server at ' + Date.now());
     });
 
-    app.get('/json', (_, res) => {
+    apiRouter.get('/json', (_, res) => {
         const data = {
             where: '127.0.0.1',
             when: Date.now(),
@@ -44,11 +46,11 @@ export default (l: Logger) => {
         res.send(JSON.stringify(data));
     });
 
-    app.get('/name/:name?', (req, res) => {
+    apiRouter.get('/name/:name?', (req, res) => {
         res.send(`Hi ${req.params.name ?? 'somebody'}`);
     });
 
-    app.post('/getHash', (req, res) => {
+    apiRouter.post('/getHash', (req, res) => {
         const { body } = req.body;
         const name: string | undefined = body.name;
         const code: string | undefined = body.code;
@@ -84,7 +86,7 @@ export default (l: Logger) => {
         );
     });
 
-    app.post('/checkHash', (req, res) => {
+    apiRouter.post('/checkHash', (req, res) => {
         const { body } = req;
         const name: string | undefined = body.name;
         const hash: string | undefined = body.hash;
@@ -130,14 +132,16 @@ export default (l: Logger) => {
         );
     });
 
-    app.get('/query', (req, res) => {
+    apiRouter.get('/query', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(req.query));
     });
 
-    app.post('/post', (req, res) => {
+    apiRouter.post('/post', (req, res) => {
         res.send(JSON.stringify(req.body));
     });
+
+    app.use('/', apiRouter);
 
     app.listen(5555, () => {
         l.stop('Server started on 5555');
