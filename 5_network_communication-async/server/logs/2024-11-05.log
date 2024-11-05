@@ -1,0 +1,159 @@
+[09:31:08:373] [INFO] [MyCoolApp] {"name":"Mourek","age":2,"color":"orange"} 
+[09:33:20:408] [INFO] [ExampleAPI] Starting Express Server 
+[09:33:20:422] [INFO] [ExampleAPI] Server started on 5555 (15 ms)
+[09:36:38:432] [INFO] [ExampleAPI] Starting Express Server 
+[09:36:38:446] [INFO] [ExampleAPI] Server started on 5555 (14 ms)
+[09:38:10:512] [INFO] [ExampleAPI] Starting Express Server 
+[09:38:10:526] [INFO] [ExampleAPI] Server started on 5555 (15 ms)
+[09:41:27:251] [INFO] [ExampleAPI] Starting Express Server 
+[09:41:27:265] [INFO] [ExampleAPI] Server started on 5555 (15 ms)
+[09:47:30:535] [INFO] [Examples] Starting examples 
+[09:47:30:540] [INFO] [Express] Starting Express Server 
+[09:47:30:548] [INFO] [WebSocket] Starting WebSocket server 
+[09:47:30:549] [INFO] [Examples] Done (15 ms)
+[09:47:30:552] [INFO] [Express] Server started on 5555 (12 ms)
+[09:47:30:553] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[09:50:14:111] [INFO] [Examples] Starting examples 
+[09:50:14:117] [INFO] [Express] Starting Express Server 
+[09:50:14:124] [INFO] [WebSocket] Starting WebSocket server 
+[09:50:14:126] [INFO] [Examples] Done (16 ms)
+[09:50:14:129] [INFO] [Express] Server started on 5555 (12 ms)
+[09:50:14:129] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[10:00:28:550] [INFO] [Examples] Starting examples 
+[10:00:28:555] [INFO] [Express] Starting Express Server 
+[10:00:28:564] [INFO] [WebSocket] Starting WebSocket server 
+[10:00:28:565] [INFO] [Examples] Done (17 ms)
+[10:00:28:569] [INFO] [Express] Server started on 5555 (14 ms)
+[10:00:28:571] [INFO] [WebSocket] WSServer started on 5556 (6 ms)
+[10:00:44:540] [INFO] [Examples] Starting examples 
+[10:00:44:546] [INFO] [Express] Starting Express Server 
+[10:00:44:561] [INFO] [WebSocket] Starting WebSocket server 
+[10:00:44:562] [INFO] [Examples] Done (23 ms)
+[10:00:44:565] [INFO] [Express] Server started on 5555 (20 ms)
+[10:00:44:566] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[10:01:20:618] [INFO] [Examples] Starting examples 
+[10:01:20:624] [INFO] [Express] Starting Express Server 
+[10:01:20:633] [INFO] [WebSocket] Starting WebSocket server 
+[10:01:20:635] [INFO] [Examples] Done (19 ms)
+[10:01:20:639] [INFO] [Express] Server started on 5555 (15 ms)
+[10:01:20:640] [INFO] [WebSocket] WSServer started on 5556 (7 ms)
+[10:02:54:252] [INFO] [Examples] Starting examples 
+[10:02:54:257] [INFO] [Express] Starting Express Server 
+[10:02:54:264] [INFO] [WebSocket] Starting WebSocket server 
+[10:02:54:265] [INFO] [Examples] Done (15 ms)
+[10:02:54:268] [INFO] [Express] Server started on 5555 (11 ms)
+[10:02:54:269] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[11:37:31:384] [INFO] [Examples] Starting examples 
+[11:37:31:391] [INFO] [Express] Starting Express Server 
+[11:37:31:400] [INFO] [WebSocket] Starting WebSocket server 
+[11:37:31:402] [INFO] [Examples] Done (19 ms)
+[11:37:31:405] [INFO] [Express] Server started on 5555 (14 ms)
+[11:37:31:406] [INFO] [WebSocket] WSServer started on 5556 (6 ms)
+[11:39:03:297] [INFO] [Examples] Starting examples 
+[11:39:03:302] [INFO] [Express] Starting Express Server 
+[11:39:03:310] [INFO] [WebSocket] Starting WebSocket server 
+[11:39:03:311] [INFO] [Examples] Done (18 ms)
+[11:39:03:314] [INFO] [Express] Server started on 5555 (12 ms)
+[11:39:03:314] [INFO] [WebSocket] WSServer started on 5556 (4 ms)
+[11:52:05:289] [INFO] [Examples] Starting examples 
+[11:52:05:296] [INFO] [Express] Starting Express Server 
+[11:52:05:303] [INFO] [WebSocket] Starting WebSocket server 
+[11:52:05:305] [INFO] [Examples] Done (17 ms)
+[11:52:05:308] [INFO] [Express] Server started on 5555 (12 ms)
+[11:52:05:308] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[11:53:05:379] [INFO] [Examples] Starting examples 
+[11:53:05:384] [INFO] [Express] Starting Express Server 
+[11:53:05:392] [INFO] [WebSocket] Starting WebSocket server 
+[11:53:05:393] [INFO] [Examples] Done (15 ms)
+[11:53:05:396] [INFO] [Express] Server started on 5555 (12 ms)
+[11:53:05:396] [INFO] [WebSocket] WSServer started on 5556 (4 ms)
+[11:56:32:549] [INFO] [Examples] Starting examples 
+[11:56:32:554] [INFO] [Express] Starting Express Server 
+[11:56:32:565] [INFO] [WebSocket] Starting WebSocket server 
+[11:56:32:566] [INFO] [Examples] Done (18 ms)
+[11:56:32:569] [INFO] [Express] Server started on 5555 (15 ms)
+[11:56:32:569] [INFO] [WebSocket] WSServer started on 5556 (4 ms)
+[11:57:50:582] [INFO] [Examples] Starting examples 
+[11:57:50:588] [INFO] [Express] Starting Express Server 
+[11:57:50:599] [INFO] [WebSocket] Starting WebSocket server 
+[11:57:50:601] [INFO] [Examples] Done (20 ms)
+[11:57:50:604] [INFO] [Express] Server started on 5555 (17 ms)
+[11:57:50:605] [INFO] [WebSocket] WSServer started on 5556 (6 ms)
+[12:06:56:088] [INFO] [Examples] Starting examples 
+[12:06:56:094] [INFO] [Express] Starting Express Server 
+[12:06:56:105] [INFO] [WebSocket] Starting WebSocket server 
+[12:06:56:106] [INFO] [Examples] Done (19 ms)
+[12:06:56:108] [INFO] [Express] Server started on 5555 (14 ms)
+[12:06:56:109] [INFO] [WebSocket] WSServer started on 5556 (4 ms)
+[12:08:11:915] [INFO] [Examples] Starting examples 
+[12:08:11:920] [INFO] [Express] Starting Express Server 
+[12:08:11:930] [INFO] [WebSocket] Starting WebSocket server 
+[12:08:11:931] [INFO] [Examples] Done (17 ms)
+[12:08:11:934] [INFO] [Express] Server started on 5555 (14 ms)
+[12:08:11:935] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[12:11:16:240] [INFO] [Examples] Starting examples 
+[12:11:16:245] [INFO] [Express] Starting Express Server 
+[12:11:16:255] [INFO] [WebSocket] Starting WebSocket server 
+[12:11:16:256] [INFO] [Examples] Done (18 ms)
+[12:11:16:258] [INFO] [Express] Server started on 5555 (13 ms)
+[12:11:16:259] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[12:53:11:084] [INFO] [Examples] Starting examples 
+[12:53:11:088] [INFO] [Express] Starting Express Server 
+[12:53:11:095] [INFO] [WebSocket] Starting WebSocket server 
+[12:53:11:096] [INFO] [Examples] Done (13 ms)
+[12:53:11:098] [INFO] [Express] Server started on 5555 (9 ms)
+[12:53:11:098] [INFO] [WebSocket] WSServer started on 5556 (3 ms)
+[12:59:48:750] [INFO] [Examples] Starting examples 
+[12:59:48:754] [INFO] [Express] Starting Express Server 
+[12:59:48:761] [INFO] [WebSocket] Starting WebSocket server 
+[12:59:48:762] [INFO] [Examples] Done (12 ms)
+[12:59:48:764] [INFO] [Express] Server started on 5555 (10 ms)
+[12:59:48:764] [INFO] [WebSocket] WSServer started on 5556 (3 ms)
+[13:08:06:009] [INFO] [Examples] Starting examples 
+[13:08:06:013] [INFO] [Express] Starting Express Server 
+[13:08:06:020] [INFO] [WebSocket] Starting WebSocket server 
+[13:08:06:021] [INFO] [Examples] Done (13 ms)
+[13:08:06:023] [INFO] [Express] Server started on 5555 (10 ms)
+[13:08:06:023] [INFO] [WebSocket] WSServer started on 5556 (3 ms)
+[13:16:45:178] [INFO] [Examples] Starting examples 
+[13:16:45:182] [INFO] [Express] Starting Express Server 
+[13:16:45:192] [INFO] [WebSocket] Starting WebSocket server 
+[13:16:45:193] [INFO] [Examples] Done (16 ms)
+[13:16:45:195] [INFO] [Express] Server started on 5555 (13 ms)
+[13:16:45:196] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
+[13:17:35:272] [INFO] [Examples] Starting examples 
+[13:17:35:276] [INFO] [Express] Starting Express Server 
+[13:17:35:284] [INFO] [WebSocket] Starting WebSocket server 
+[13:17:35:285] [INFO] [Examples] Done (12 ms)
+[13:17:35:286] [INFO] [Express] Server started on 5555 (10 ms)
+[13:17:35:287] [INFO] [WebSocket] WSServer started on 5556 (3 ms)
+[13:18:12:560] [INFO] [Examples] Starting examples 
+[13:18:12:564] [INFO] [Express] Starting Express Server 
+[13:18:12:571] [INFO] [WebSocket] Starting WebSocket server 
+[13:18:12:572] [INFO] [Examples] Done (13 ms)
+[13:18:12:574] [INFO] [Express] Server started on 5555 (10 ms)
+[13:18:12:574] [INFO] [WebSocket] WSServer started on 5556 (3 ms)
+[13:18:39:572] [INFO] [Examples] Starting examples 
+[13:18:39:576] [INFO] [Express] Starting Express Server 
+[13:18:39:584] [INFO] [WebSocket] Starting WebSocket server 
+[13:18:39:584] [INFO] [Examples] Done (13 ms)
+[13:18:39:586] [INFO] [Express] Server started on 5555 (10 ms)
+[13:18:39:587] [INFO] [WebSocket] WSServer started on 5556 (3 ms)
+[13:27:40:602] [INFO] [Examples] Starting examples 
+[13:27:40:606] [INFO] [Express] Starting Express Server 
+[13:27:40:613] [INFO] [WebSocket] Starting WebSocket server 
+[13:27:40:614] [INFO] [Examples] Done (13 ms)
+[13:27:40:616] [INFO] [Express] Server started on 5555 (10 ms)
+[13:27:40:617] [INFO] [WebSocket] WSServer started on 5556 (4 ms)
+[13:48:17:115] [INFO] [Examples] Starting examples 
+[13:48:17:119] [INFO] [Express] Starting Express Server 
+[13:48:17:127] [INFO] [WebSocket] Starting WebSocket server 
+[13:48:17:128] [INFO] [Examples] Done (14 ms)
+[13:48:17:130] [INFO] [Express] Server started on 5555 (11 ms)
+[13:48:17:131] [INFO] [WebSocket] WSServer started on 5556 (4 ms)
+[14:10:06:673] [INFO] [Examples] Starting examples 
+[14:10:06:678] [INFO] [Express] Starting Express Server 
+[14:10:06:688] [INFO] [WebSocket] Starting WebSocket server 
+[14:10:06:689] [INFO] [Examples] Done (17 ms)
+[14:10:06:692] [INFO] [Express] Server started on 5555 (14 ms)
+[14:10:06:693] [INFO] [WebSocket] WSServer started on 5556 (5 ms)
