@@ -120,6 +120,7 @@ console.log(string.split("").reduce((acc, c) => c + acc));
 -   element.onclick = () => {}
 -   element.onmouseover = () => {}
 -   ....
+-   případně přímo na html elementu: \<button onclick="funkce();">...\</button>
 
 ### Moderní:
 
