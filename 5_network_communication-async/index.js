@@ -98,24 +98,24 @@ async function returnAfterXS(n, s) {
 
 returnAfterXS(5555, 2 * 1000).then(console.log)
     /*; (async function() {
-                                                                                                            await sleep(10 * 1000)
-                                                                                                    
-                                                                                                            console.log('Computation started')
-                                                                                                    
-                                                                                                            async function computation() {
-                                                                                                                let sum = 0
-                                                                                                                for (let i = 0; i < Math.pow(2, 33); ++i) {
-                                                                                                                    sum += i
-                                                                                                                }
-                                                                                                                return sum
-                                                                                                            }
-                                                                                                    
-                                                                                                            computation().then(console.log)
-                                                                                                    
-                                                                                                            for (let i = 0; i < Math.pow(2, 5); ++i) console.log(i)
-                                                                                                    
-                                                                                                            console.log('Main done')
-                                                                                                        })()*/
+                                                                                                                            await sleep(10 * 1000)
+                                                                                                                    
+                                                                                                                            console.log('Computation started')
+                                                                                                                    
+                                                                                                                            async function computation() {
+                                                                                                                                let sum = 0
+                                                                                                                                for (let i = 0; i < Math.pow(2, 33); ++i) {
+                                                                                                                                    sum += i
+                                                                                                                                }
+                                                                                                                                return sum
+                                                                                                                            }
+                                                                                                                    
+                                                                                                                            computation().then(console.log)
+                                                                                                                    
+                                                                                                                            for (let i = 0; i < Math.pow(2, 5); ++i) console.log(i)
+                                                                                                                    
+                                                                                                                            console.log('Main done')
+                                                                                                                        })()*/
     ; (async function() {
         const data = await getData('http://localhost:5555/name/Nejake Jine Jmeno')
         console.log(data)
@@ -250,3 +250,19 @@ console.log(params.toString())
             console.log(json)
         }
     })()
+
+/// Websocket
+
+const ws = new WebSocket('ws://localhost:5556')
+
+ws.onmessage = (ev) => {
+    console.log(ev.data)
+}
+
+ws.onopen = () => {
+    console.log('Connected to websocket')
+}
+
+ws.onclose = () => {
+    console.log('Connection closed')
+}

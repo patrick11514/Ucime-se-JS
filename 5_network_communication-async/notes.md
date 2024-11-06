@@ -346,3 +346,113 @@ Promise.all([Promise.resolve(1), Promise.resolve(2), Promise.reject(3)])
     const json = await response.json();
     console.log(json);
     ```
+
+# Websocket
+
+-   Na webových stránkách nemáme jak navázat komunikaci přímo na se serverem (TCP)
+-   Proto vznikl Websocket, který je postavený na HTTP
+-   Při pokusu o navázání, dojde k 101 Switching Protocols a připojení se Upgraduje
+-   Nyní je připojení se serverem navázané a může probíhat komunikace oběma směry
+-   Komunikace může probíhat jak binárně, tak i textově
+-   Api podobně zastaralé na principech nastavení metod pro .onmessage = () => {} atd..
+
+```JS
+const ws = new WebSocket('ws://localhost:5556')
+
+ws.onmessage = (ev) => {
+    console.log(ev.data)
+}
+
+ws.onopen = () => {
+    console.log('Connected to websocket')
+}
+
+ws.onclose = () => {
+    console.log('Connection closed')
+}
+```
+
+## Zadání DU
+
+# Úkol 5 - Network Communication
+
+## 1. Fetch
+
+### Užitečné odkazy:
+
+-   [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+-   [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+-   [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+-   [btoa](https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa)
+
+Vytvořte jednoduchou web stránku, kde budou 3 inputy, 3 tlačítka a 1 textarea. Ukázka zde:
+
+```HTML
+<input id="name" type="text" placeholder="Enter your name">
+<button id="getHash">Get Hash</button>
+<input id="hash" readonly="" type="text" placeholder="Here will be hash from server">
+<button id="calculate">Calculate code</button>
+<input id="code" readonly="" type="text" placeholder="Here will appear out calculated code">
+<button id="check">Check with server</button>
+<textarea id="result"</textarea>
+```
+
+Jak bude tato stránka fungovat:
+Nachystal jsem pro vás API na odkazu https://learn.patrick115.eu/api. Tato API má dva endpointy, které budete používat. Oba tyto endpointy supportí, jak JSON, tak FormData (v klasické podobně, tedy key=value&key=value...). API odpovědi jsou ve formátu JSON a jsou následující:
+Pokud vše proběhné správně:
+
+```JSON
+{
+    "status": true,
+    "data": 123 //nějaké data, nemusí být vyplněno
+}
+```
+
+Pokud se něco nepovede:
+
+```JSON
+{
+    "status": false,
+    "message": "Error message" //Ta tady bude vždy, můžete jí vypisovat třeba přes alert/console.error/někam do stránky
+}
+```
+
+1. Endpoint, který vás bude zajímat je https://learn.patrick115.eu/api/getHash
+   Tento endpoint očekává name: string a code: string. Name dostanete z inputu na stránce (viz HTML nahoře input#name) po kliknutí na první tlačítko (viz HTML button#getHash) za ním se vygeneruje random string/číslo přes Math.random převedené na string a poté se pošle POST request na tuto API s name z inputu a code tím, který jsme si vygenerovali. Code si uložte někam globálně, budete ho potom potřebovat.
+   Pokud API vše uděláte dobře, dostanete:
+    ```JSON
+    {
+        "success": true,
+        "data": "xyzgdfgdfgdfg181gsdgsgdsdg"
+    }
+    ```
+    Tento kód, co jste dostali, si uložte do dalšího inputu (viz HTML nahoře input#hash)
+2. Po kliknutí na druhé tlačítko (viz HTML nahoře button#calculate) vypočítejte kód, který pošlete v 3. kroku na server.
+   Tento kód se skládá z name, code (který je naopak/pozadu/reversnutý), kód co jsme dostali v předchozím requestu.
+   Tyto proměnné spojíte do jednoho stringu a mezi každou proměnnou dáte ':', tedy name:reversedCode:hash
+   Nyní si tento string převedete do base64 pomocí [btoa](https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa)
+   Tento string si následně uložíte do dalšího inputu (viz HTML nahoře input#code)
+3. Nyní po kliknutí na třetí tlačítko (viz HTML button#check) pošlete na další endpoint https://learn.patrick115.eu/api/checkHash požadavek, který očekává name: string a hash: string Name použijeme opět to co je v inputu a hash, který jsme vypočítali v kroku 2. Poté výsledek z API hodíme na string a vložíme do textarea (viz HTML textare#result). Pokud vše teda fungovalo správně, měli bychom dostat:
+    ```JSON
+    {
+        "success": true,
+    }
+    ```
+
+## 2. Jednoduchý "chat"
+
+### Užitečné odkazy:
+
+-   [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+
+Dalším úkolem je naimplementovat jednoduchý "chat", který se bude chovat jako ozvěna. Na stránce (klidně té stejné, kde jste dělali úkol 1 přidejte input, do kterého budeme psát a tlačítko odeslat. Poté se připojíme na websocket wss://learn.patrick115/ws ten nám na začátku pošle néjaké základní info.
+Info:
+
+-   Jedná se o echo (ozvěna) server, tedy co do něho pošleme, to dostaneme od serveru zpět
+-   Pro odpojení serveru stačí napsat /end
+
+Na stránku přidejte div/textarea, do které budete vypisovat celou komunikaci.
+Při připojení ws.onopen / ws.addEventListener("open", ...) vypište do divu/textarea info o tom, že jsme se připojili.
+\*\*Před každou zprávu dejte aktuální timestamp: Date.now() třeba do závorek: [176151561561] Connected to server
+Nyní udělejte to, že po kliknutí na tlačítko se zpráva/slovo z inputu odešle na websocket server a my přečteme zprávu z něco: ws.onmessage/ws.addEventListener("message", ...) a tu vypíšeme opět s timestamp do divu/textarea.
+Pro ukončení stačí napsat /end a opět do divu/textarea vypíšeme že jsme se odpojili, opět s timestamp: [1748518561] Connection to server lost/Disconnected from server
