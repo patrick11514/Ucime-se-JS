@@ -38,13 +38,13 @@ a = true; //ERROR
 
 let status:
     | {
-          status: true; // pokud status je true
-          data: string; // tak bude object obsahovat data typu string
-      }
+        status: true; // pokud status je true
+        data: string; // tak bude object obsahovat data typu string
+    }
     | {
-          status: false; // pokud je ale status false
-          message: string; // tak bude object obsahovat message typu string
-      };
+        status: false; // pokud je ale status false
+        message: string; // tak bude object obsahovat message typu string
+    };
 
 status = {
     status: true,
@@ -119,14 +119,14 @@ if (typeof bb === 'string') {
 //satisfies
 type Status =
     | {
-          ///union začínající na novém řádku, typicky nepíšeme, ale formatter za nás udělá, tedy je to validní kód
-          status: true; // pokud status je true
-          data: string; // tak bude object obsahovat data typu string
-      }
+        ///union začínající na novém řádku, typicky nepíšeme, ale formatter za nás udělá, tedy je to validní kód
+        status: true; // pokud status je true
+        data: string; // tak bude object obsahovat data typu string
+    }
     | {
-          status: false; // pokud je ale status false
-          message: string; // tak bude object obsahovat message typu string
-      };
+        status: false; // pokud je ale status false
+        message: string; // tak bude object obsahovat message typu string
+    };
 const correctStatus = {
     status: true,
     data: 'Ahoj'
@@ -168,6 +168,8 @@ type StringNumber = `${string}-${number}`; // tady pracujeme na typové úrovni,
     color = 'text-'; //Error
 }
 
+//Generics
+
 type Wrapper<T extends string | number> = T;
 let zz1: Wrapper<string>; //OK
 let zz2: Wrapper<number>; //OK
@@ -177,6 +179,14 @@ let zz3: Wrapper<boolean>; //ERROR
 
 type NumberForType<T> = T extends string ? 69 : 123;
 let zz4: NumberForType<'ahoj'>;
+
+const array1: Array<string> = [];
+const array2: string[] = [];
+
+const promise = new Promise<string>((resolve, reject) => {
+    resolve(10); //Error
+    resolve('OK'); //OK
+});
 
 ///
 
@@ -236,10 +246,10 @@ type Mutable<T> = {
 
 type MutableObject<T> = {
     -readonly [K in keyof T]: T[K] extends readonly [infer U, ...infer Rest] // Check if it's a readonly tuple
-        ? [U, ...Rest] // Keep the tuple type intact but remove readonly
-        : T[K] extends ReadonlyArray<infer U> // Check if it's a readonly array (not tuple)
-          ? U[] // Convert to a mutable array
-          : T[K]; // Keep other types as they are
+    ? [U, ...Rest] // Keep the tuple type intact but remove readonly
+    : T[K] extends ReadonlyArray<infer U> // Check if it's a readonly array (not tuple)
+    ? U[] // Convert to a mutable array
+    : T[K]; // Keep other types as they are
 };
 
 type MakeTuples<T extends readonly Record<string, any>[]> = MutableObject<{
@@ -247,3 +257,22 @@ type MakeTuples<T extends readonly Record<string, any>[]> = MutableObject<{
 }>;
 
 type AA = MakeTuples<typeof persons>;
+
+///IS
+
+const isString = (value: unknown): value is string => {
+    /// Tady říkáme, že to vrátí true, pokud T je string, ale jen na typové úrovni
+    return typeof value === 'string'; /// tady to kontrolujeme již na úrovní kódu
+};
+
+//toto se hodí například v ifech
+
+let unknown: unknown = 10;
+
+if (isString(unknown)) {
+    console.log(unknown); // tady je typ unknown string
+}
+
+if (typeof unknown === 'string') {
+    console.log(unknown); // taky string, ale kdysi to typescript neuměl
+}

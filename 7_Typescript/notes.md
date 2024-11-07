@@ -404,6 +404,17 @@ type TypeOfA = typeof a;
         const array: string[] = ['ahoj', 'jak', 'se', 'mas'];
         ```
 
+    -   To stejný například Promise:
+
+        -   Promise<T> - generický promise
+
+        ```ts
+        const promise = new Promise<string>((resolve, reject) => {
+            resolve(10); //Error, očekáváme string;
+            resolve('OK'); //OK
+        });
+        ```
+
     -   extends:
 
         -   Extends nám dokáže zůžit náš typ T například jen na nějaký array:
@@ -505,3 +516,45 @@ type MakeTuples<T extends readonly Record<string, any>[]> = MutableObject<{
 
 type AA = MakeTuples<typeof persons>;
 ```
+
+-   is:
+
+    -   Pokud chceme returnovat boolean, na základě nějakého typu
+    -   Tak tady využijeme this
+    -   Že když tam předáme string, vrátí true, jinak false
+
+    ```ts
+    const isString = (value: unknown): value is string => {
+        /// Tady říkáme, že to vrátí true, pokud T je string, ale jen na typové úrovni
+        return typeof value === 'string'; /// tady to kontrolujeme již na úrovní kódu
+    };
+    const result1 = isString('Ahoj'); /// true - boolean typ
+    const result2 = isString(10); /// false - boolean typ
+
+    //pokud to ale použijeme v ifu, například:
+    let unknown: unknown = 10;
+    if (isString(unknown)) {
+        console.log(unknown); // tady je typ string
+    }
+    ```
+
+    -   Na takhle triviální věc rovnou do ifu můžeme dát typeof....
+    -   Ale na složitější kontrolu, například z await response.json() dostaneme any a kontrolujeme zda se jedná o náš special typ/object pokud ano, tak to máme již natypované a můžeme bezpečně používat
+
+### Úkol
+
+vezměme si API z úkolu 5. Síťová komunikace a
+
+1. zadejte jméno do konstatní proměnné
+2. vytvořte generickou funkci, která dostane url, metodu a data.
+    - Parameter url bude string
+    - Parameter method bude typu Method, která bude povolovat pouze literaly: "GET", "POST" | "PUT" | "PATCH" | "DELETE" a defaultně bude mít nastavenou hodnotu na "GET"
+    - Parameter data bude optional a bude příjmat any
+    - V této funkci poté zavoláte fetch na danou URL. Pokud metodu fetche berte z parametru a pokud parametr data není undefined, tak jej převeďte na string pomocí JSON.stringify (to funuje na stringy, čísla, objekty i arraye)
+    - Poté result z funkce fetch parsněte na json .json()
+    - Vraťte data zpátky
+    - Pokud nastane chyba vraťte undefined
+    - Funkce bude async, takže vrací Promise\<T>!!!
+3. nyní vaši vytvořenou funkci použijte a získejte data z API /getHash, zkontrolujte return type!
+4. nyní spočitejte váš hash
+5. opět použijte vaši funkci na poslání dat do API /checkHash a return type zkontrolujte a napište něco jako "Hash byl správně vypočítán"/"Nebyl správně vypočítán"....
