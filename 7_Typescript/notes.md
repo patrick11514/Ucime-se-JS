@@ -541,20 +541,59 @@ type AA = MakeTuples<typeof persons>;
     -   Na takhle triviální věc rovnou do ifu můžeme dát typeof....
     -   Ale na složitější kontrolu, například z await response.json() dostaneme any a kontrolujeme zda se jedná o náš special typ/object pokud ano, tak to máme již natypované a můžeme bezpečně používat
 
-### Úkol
+## Zadání DU
+
+# Úkol 7 - typescript
+
+### Užitečné odkazy:
+
+-   [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+-   [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+-   [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+-   [btoa](https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa)
+-   [generika](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+-   [union](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html)
+
+### Zadání:
 
 vezměme si API z úkolu 5. Síťová komunikace a
 
 1. zadejte jméno do konstatní proměnné
-2. vytvořte generickou funkci, která dostane url, metodu a data.
-    - Parameter url bude string
-    - Parameter method bude typu Method, která bude povolovat pouze literaly: "GET", "POST" | "PUT" | "PATCH" | "DELETE" a defaultně bude mít nastavenou hodnotu na "GET"
-    - Parameter data bude optional a bude příjmat any
-    - V této funkci poté zavoláte fetch na danou URL. Pokud metodu fetche berte z parametru a pokud parametr data není undefined, tak jej převeďte na string pomocí JSON.stringify (to funuje na stringy, čísla, objekty i arraye)
-    - Poté result z funkce fetch parsněte na json .json()
-    - Vraťte data zpátky
-    - Pokud nastane chyba vraťte undefined
-    - Funkce bude async, takže vrací Promise\<T>!!!
+2. vytvořte generickou funkci, která dostane url, metodu a data. - Parameter url bude string - Parameter method bude typu Method, která bude povolovat pouze literaly: "GET", "POST" | "PUT" | "PATCH" | "DELETE" a defaultně bude mít nastavenou hodnotu na "GET" - Parameter data bude optional a bude příjmat any - V této funkci poté zavoláte fetch na danou URL. Pokud metodu fetche berte z parametru a pokud parametr data není undefined, tak jej převeďte na string pomocí JSON.stringify (to funuje na stringy, čísla, objekty i arraye) - Poté result z funkce fetch parsněte na json .json() - Vraťte data zpátky - Pokud nastane chyba vraťte undefined - Funkce bude async, takže vrací Promise\<T>!!!
+
+    - Ideálně si udělejte typ Response, nebo tak něco, který dostane generické data a bude říkat, že buď můžeme dostat status:false s error message a nebo status true s daty typu T
+
 3. nyní vaši vytvořenou funkci použijte a získejte data z API /getHash, zkontrolujte return type!
 4. nyní spočitejte váš hash
 5. opět použijte vaši funkci na poslání dat do API /checkHash a return type zkontrolujte a napište něco jako "Hash byl správně vypočítán"/"Nebyl správně vypočítán"....
+
+### Ukázka:
+
+```ts
+const main = async () => {
+
+    const username = "Patrik";
+
+    const randomNum = /*TODO*/;
+
+    const hash = await getData<Result<string>>("https://learn.patrick115.eu/api/getHash", "POST", {
+        name: username,
+        code: randomNum
+    });
+
+    //check hash
+
+    const code = ;//construct code
+    const b64 = Buffer.from(code).toString("base64"); //we can also use btoa
+
+    const verified = await getData(/*.....*/);
+    //check verify
+    //if not correct
+    console.log("Hash is not correct");
+    //else
+    console.log("Hash is correct");
+
+}
+
+main();
+```
