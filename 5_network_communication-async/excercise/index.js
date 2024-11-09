@@ -28,21 +28,21 @@ promise.then(() => console.log('Promise byl dokončen')).catch(() => console.log
 
 function getData(url) {
     return new Promise((resolve, reject) => {
-        const xhttp = new XMLHttpRequest()
+        const xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = () => {
             if (xhttp.readyState == 4) {
-                resolve(xhttp.responseText)
+                resolve(xhttp.responseText);
             }
-        }
+        };
 
         xhttp.ontimeout = () => {
-            reject()
-        }
+            reject();
+        };
 
-        xhttp.open('GET', url, true)
-        xhttp.send()
-    })
+        xhttp.open('GET', url, true);
+        xhttp.send();
+    });
 }
 
 /*getData('https://learn.patrick115.eu/api')
@@ -61,7 +61,7 @@ resolvePromiseWithNumber(10).then(console.log)
 resolvePromiseWithNumber2(20).then(console.log)
 */
 function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms))
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 /*
 async function returnAfterNS(n, s) {
@@ -145,39 +145,39 @@ async function main() {
     }*/
 }
 
-main()
+main();
 
-console.log(Promise.resolve(10))
-console.log(Promise.reject('ERROR'))
+console.log(Promise.resolve(10));
+console.log(Promise.reject('ERROR'));
 
 async function slowFetch(ret = false) {
-    const urls = Array.from({ length: 5 }).map((_, i) => `https://learn.patrick115.eu/api/name/Karel-${Date.now() * (i + 1)}`)
+    const urls = Array.from({ length: 5 }).map((_, i) => `https://learn.patrick115.eu/api/name/Karel-${Date.now() * (i + 1)}`);
 
-    const start = Date.now()
+    const start = Date.now();
 
     for (const url of urls) {
-        const response = await fetch(url)
-        const text = await response.text()
+        const response = await fetch(url);
+        const text = await response.text();
     }
 
-    if (ret) return Date.now() - start
-    else console.log(`Trvalo to Slower: ${Date.now() - start}ms`)
+    if (ret) return Date.now() - start;
+    else console.log(`Trvalo to Slower: ${Date.now() - start}ms`);
 }
 
 async function fasterFetch(ret = false) {
-    const urls = Array.from({ length: 5 }).map((_, i) => `https://learn.patrick115.eu/api/name/Karel-${Date.now() * (i + 1)}`)
+    const urls = Array.from({ length: 5 }).map((_, i) => `https://learn.patrick115.eu/api/name/Karel-${Date.now() * (i + 1)}`);
 
     const promises = urls.map(async (url) => {
-        const response = await fetch(url)
-        const text = await response.text()
-    })
+        const response = await fetch(url);
+        const text = await response.text();
+    });
 
-    const start = Date.now()
+    const start = Date.now();
 
-    await Promise.all(promises)
+    await Promise.all(promises);
 
-    if (ret) return Date.now() - start
-    else console.log(`Trvalo to Faster: ${Date.now() - start}ms`)
+    if (ret) return Date.now() - start;
+    else console.log(`Trvalo to Faster: ${Date.now() - start}ms`);
 }
 
 //slowFetch()
@@ -206,12 +206,12 @@ async function fasterFetch(ret = false) {
     }
 })()*/
 
-Promise.allSettled([Promise.resolve(10), Promise.resolve(15), Promise.reject('err'), Promise.resolve('456465')]).then(console.log)
+Promise.allSettled([Promise.resolve(10), Promise.resolve(15), Promise.reject('err'), Promise.resolve('456465')]).then(console.log);
 
-    //const promise = new Promise((resolve, reject) => {...})
+//const promise = new Promise((resolve, reject) => {...})
 
-    //const {promise, resolve, reject} = Promise.withResolvers()
-    /*    ; (async function() {
+//const {promise, resolve, reject} = Promise.withResolvers()
+/*    ; (async function() {
                             const params = new URLSearchParams()
                             params.append('key', 'value')
                             params.append('name', 'Patrik')
@@ -220,27 +220,45 @@ Promise.allSettled([Promise.resolve(10), Promise.resolve(15), Promise.reject('er
                             const data = await response.json()
                             console.log(data)
                         })()*/
-    ; (async function() {
-        //const params = new URLSearchParams()
-        //params.append('key', 'value')
-        //params.append('name', 'Patrik')
-        const formData = new FormData()
-        formData.append('key', 'value')
-        formData.append('name', 'Patrik')
+(async function () {
+    //const params = new URLSearchParams()
+    //params.append('key', 'value')
+    //params.append('name', 'Patrik')
+    const formData = new FormData();
+    formData.append('key', 'value');
+    formData.append('name', 'Patrik');
 
-        const response = await fetch('https://learn.patrick115.eu/api/post', {
-            method: 'POST',
-            headers: {
-                //'Content-Type': 'application/x-www-form-urlencoded'
-                'Content-Type': 'application/json'
-            },
-            body: formData /*JSON.stringify({
-                key: 'value',
-                name: 'Patrik'
-            })*/
+    const response = await fetch('https://learn.patrick115.eu/api/post', {
+        method: 'POST',
+        headers: {
+            //'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            key: 'value',
+            name: 'Patrik'
         })
+    });
 
-        const data = await response.json()
+    const data = await response.json();
 
-        console.log(data)
-    })()
+    console.log(data);
+})();
+
+//websocket
+
+const ws = new WebSocket('wss://learn.patrick115.eu/ws');
+
+ws.addEventListener('open', () => {
+    console.log('Connection opened');
+
+    //    ws.send('Ahoj');
+});
+
+ws.addEventListener('close', () => {
+    console.log('Connection closed');
+});
+
+ws.addEventListener('message', (ev) => {
+    console.log(ev.data);
+});
