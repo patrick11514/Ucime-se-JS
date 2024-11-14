@@ -228,3 +228,57 @@ export default config;
 ```
 
 -   Nyní jsme řekli, že proměnná counter je reaktivní, takže Svelte nyní bude akutalizovat jeji hodnotu v UI
+-   To way-binding:
+
+    -   Zatím umíme přenášet data z proměnné do HTML/atributů HTML Elementu
+    -   Co když chceme ale například data vytahovat ven?
+
+    ```svelte
+    <script lang="ts">
+        let name = $state("Patrik");
+    </script>
+
+    <input type="text" value={name} />
+    {name}
+    ```
+
+    -   Jak můžeme vidět, data se tam poslala, takže v inputu je "Patrik", ale když input upravujeme, text vedle něho se nemění
+    -   Co když před value přidáme bind:?
+
+    ```svelte
+    <script lang="ts">
+        let name = $state("Patrik");
+    </script>
+
+    <input type="text" bind:value={name} />
+    {name}
+    ```
+
+    -   Tím říkáme, spoj value na inptutu s proměnnou name (na podazí něco jako .addEventListener("input", nastavName)..
+    -   Takže nyní, když píšeme do inputu, mění se i tex pod tím + všechno, kde používáme name
+
+-   Nyní si ukážeme pár special syntaxí ze zhora:
+
+    -   if/else if/else
+
+    ```svelte
+    <script lang="ts">
+        let counter = $state(0);
+    </script>
+    <button onclick={() => counter++}>{counter}</button>
+
+    {#if counter > 20}
+        <h1>WOWW</h1>
+    {:else if counter > 10}
+        <h2>Skoro</h2>
+    {:else if counter > 5}
+        <h3>Okay</h3>
+    {:else}
+        <h4>trapný</h4>
+    {/if}
+    ```
+
+    -   Pro each mám tady předělanou ukázku z úkolu na TODO list [viz](./src/routes/todo/+page.svelte)
+    -   key/await později
+
+### Není úkol YAY
