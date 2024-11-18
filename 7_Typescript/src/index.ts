@@ -258,6 +258,24 @@ type MakeTuples<T extends readonly Record<string, any>[]> = MutableObject<{
 
 type AA = MakeTuples<typeof persons>;
 
+///CLASS EXAMPLE
+
+class ValueWrapper<$Type> {
+    constructor(private value: $Type) { }
+
+    setValue(newValue: $Type) {
+        this.value = newValue;
+    }
+
+    getValue(): $Type {
+        return this.value;
+    }
+}
+
+const string = new ValueWrapper('ahoj');
+const result = string.getValue(); // string
+string.setValue(10); // error
+
 ///IS
 
 const isString = (value: unknown): value is string => {

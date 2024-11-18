@@ -517,6 +517,26 @@ type MakeTuples<T extends readonly Record<string, any>[]> = MutableObject<{
 type AA = MakeTuples<typeof persons>;
 ```
 
+-   Dokonce classy můžou být celé genericky otypované:
+
+```TS
+class ValueWrapper<$Type> {
+    constructor(private value: $Type) {}
+
+    setValue(newValue: $Type) {
+        this.value = newValue;
+    }
+
+    getValue(): $Type {
+        return this.value;
+    }
+}
+
+const string = new ValueWrapper("ahoj");
+const result = string.getValue(); // string
+string.setValue(10); // error
+```
+
 -   is:
 
     -   Pokud chceme returnovat boolean, na základě nějakého typu
