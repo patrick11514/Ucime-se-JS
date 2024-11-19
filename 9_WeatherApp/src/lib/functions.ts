@@ -21,3 +21,10 @@ export const fetchFromAPI = async <$ReturnType>(url: string, schema: z.ZodType<$
         return undefined;
     }
 };
+
+export const formatDate = (dateLike: Date | number) => {
+    const date = new Date(dateLike);
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`
+}

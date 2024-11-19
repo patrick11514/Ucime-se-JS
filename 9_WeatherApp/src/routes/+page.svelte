@@ -9,7 +9,7 @@
     let city = $state('');
 
     const getData = async () => {
-        const data = await fetchFromAPI(`https://api.openweathermap.org/data/2.5/weather?q=${city},CZ&appid=${PUBLIC_API_KEY}&lang=cz&units=metric`, schema);
+        const data = await fetchFromAPI(`https://api.openweathermap.org/data/2.5/weather?q=${city},CZ&appid=${PUBLIC_API_KEY}&lang=en&units=metric`, schema);
 
         if (data === undefined) {
             return undefined;
