@@ -12,6 +12,15 @@ export default {
                 primary: '#41c9d2',
                 secondary: '#87e9ee',
                 accent: '#5de8ef'
+            },
+            fontFamily: {
+                ubuntu: ['Ubuntu', 'sans-serif'],
+                inter: ['Inter', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
+                roboto: ['Roboto', 'sans-serif']
+            },
+            gridTemplateColumns: {
+                nav: '1fr auto 1fr'
             }
         }
     },
