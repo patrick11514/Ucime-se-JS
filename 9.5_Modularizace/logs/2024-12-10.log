@@ -1,1 +1,92 @@
 [13:32:48:934] [INFO] [MyCoolApp] {"name":"Mourek","age":2,"color":"orange"} 
+[20:44:58:486] [INFO] [Export Example] Patrik 
+[20:48:27:670] [INFO] [Export Example] Patrik 
+[20:48:27:673] [INFO] [Export Example] Ahoj 
+[20:49:55:497] [INFO] [Export Example] Patrik 
+[20:49:55:500] [INFO] [Export Example] Ahoj 
+[20:49:55:500] [INFO] [Export Example] [object Object] 
+[20:51:26:441] [INFO] [Export Example] Patrik 
+[20:51:26:445] [INFO] [Export Example] Ahoj 
+[20:51:26:445] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": false
+} 
+[20:51:38:193] [INFO] [Export Example] Patrik 
+[20:51:38:196] [INFO] [Export Example] Ahoj 
+[20:51:38:196] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": false
+} 
+[20:51:38:196] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": true
+} 
+[20:53:51:549] [INFO] [Export Example] Patrik 
+[20:53:51:552] [INFO] [Export Example] Ahoj 
+[20:53:51:552] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": false
+} 
+[20:53:51:552] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": true
+} 
+[20:53:51:552] [INFO] [Export Example] Patrik 
+[20:53:51:552] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": true
+} 
+[20:56:38:067] [INFO] [Export Example] Patrik 
+[20:56:38:070] [INFO] [Export Example] Ahoj 
+[20:56:38:070] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": false
+} 
+[20:56:38:070] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": true
+} 
+[20:56:38:070] [INFO] [Export Example] Patrik 
+[20:56:38:070] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": true
+} 
+[20:56:38:076] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[20:56:38:077] [INFO] [Export Example] 55 
+[21:09:17:359] [INFO] [Export Example] Patrik 
+[21:09:17:362] [INFO] [Export Example] Ahoj 
+[21:09:17:363] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": false
+} 
+[21:09:17:363] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": true
+} 
+[21:09:17:363] [INFO] [Export Example] Patrik 
+[21:09:17:363] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "isReal": true
+} 
+[21:09:17:366] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[21:09:17:366] [INFO] [Export Example] 55 
+[21:09:17:366] [INFO] [Export Example] 25 
+[21:09:17:366] [INFO] [Export Example] Cool 
+[21:09:17:368] [INFO] [Export Example] {
+    "name": "Bulbasaur",
+    "type": "Water"
+} 
+[21:09:17:368] [INFO] [Export Example] {
+    "name": "Charmander",
+    "type": "Fire"
+} 

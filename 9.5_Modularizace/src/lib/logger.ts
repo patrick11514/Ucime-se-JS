@@ -75,6 +75,10 @@ class Logger {
         const textType = type == 'INFO' ? clc.blue('INFO') : clc.red('ERROR');
         const textColor = type == 'INFO' ? clc.white : clc.red;
 
+        if (typeof data === 'object') {
+            data = JSON.stringify(data, null, 4);
+        }
+
         if (this.sensitive) {
             console.log(
                 `${clc.white('[')}${clc.green(this.getTime())}${clc.white(']')} ${clc.white('[')}${textType}${clc.white(
