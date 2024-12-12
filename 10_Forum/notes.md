@@ -62,7 +62,7 @@ mysql://superclovek:tajnyheslo123456@10.10.10.223:3306/db
         "genDatabaseSchema": "kysely-codegen --out-file ./src/types/database.ts",
     ```
 
-                                  - Tento script nám uděla to, že když zavoláme `npm run genDatabaseSchema`, tak se spustí kysely-codegen a vygeneruje nám typy do složky ./src/types/database.ts
+                                    - Tento script nám uděla to, že když zavoláme `npm run genDatabaseSchema`, tak se spustí kysely-codegen a vygeneruje nám typy do složky ./src/types/database.ts
 
     2. Teď jsme udělali vytváření typů. Dále potřebujeme nějak se připojit k databázi, k tomu použijeme package mysql2, co jsme instalovali nahoře. Já typicky mám udělaný soubor varaibles.ts v src/lib/server, kde si vytvářím exportované proměnné (variables) a ty si poté importuju do různých souborů:
 
@@ -82,7 +82,7 @@ mysql://superclovek:tajnyheslo123456@10.10.10.223:3306/db
     });
     ```
 
-                                - Tímto jsme si udělali proměnnou dialect (takto nazývá Kysely různé typy připojení), a jak můžeme vidět, do něho ukládáme nový MysqlDialect a v něm vytváříme pool (bazén), do které ukládáme výstup funkce createPool právě z mysql2. Pool je v podstatě nějaký "bazén" připojení, které jsou dopředu navázané a my když chceme se připojit k databázi, tak se nevude dělat nové, ale z poolu se nějaké vytáhne a přes něho se rovnou komunikuje z DB.
+                                  - Tímto jsme si udělali proměnnou dialect (takto nazývá Kysely různé typy připojení), a jak můžeme vidět, do něho ukládáme nový MysqlDialect a v něm vytváříme pool (bazén), do které ukládáme výstup funkce createPool právě z mysql2. Pool je v podstatě nějaký "bazén" připojení, které jsou dopředu navázané a my když chceme se připojit k databázi, tak se nevude dělat nové, ale z poolu se nějaké vytáhne a přes něho se rovnou komunikuje z DB.
 
     3. Teď potřebujeme udělat novou instanci kysely s daným dialectem a typama, co jsme obdrželi od kysely-codegen:
 
@@ -94,7 +94,7 @@ mysql://superclovek:tajnyheslo123456@10.10.10.223:3306/db
     });
     ```
 
-                                - Zde používáme ten náš předtím vytvořený dialect, importujeme typ DB ze souboru co vytvořil codegen a exportujeme proměnnou conn, kterou budeme používat na komunikaci s DB
+                                  - Zde používáme ten náš předtím vytvořený dialect, importujeme typ DB ze souboru co vytvořil codegen a exportujeme proměnnou conn, kterou budeme používat na komunikaci s DB
 
 - Tak když máme nachystané připojení k databázi, tak si řekneme, jak systém bude probíhat:
 
@@ -258,18 +258,18 @@ tree
     export const procedure = api.procedure;
     ```
 
-                    - Router je hlavní část, která řeší, která url (endpoint) odpovídá, jaké funkcinalitě, ta tady funguje tak, že mám object a vše se přidává za náš určený základ (base url). TaTakže když mám:
-                    ```ts
-                    {
-                        "helo": ...,
-                        "auth": {
-                            "login": ...,
-                            "register": ...
-                        }
-                    }
-                    ```
-                    - Tak budu mít třeba: /api/helo, /api/auth/login, /api/auth/register atd...
-                    - Dále teda mám proceduru, což je v podstatě nějaká už daná akce, co se vykoná (jméno jsem převzal z balíčku TRCP, což dělá něco podobného pro NextJS)
+                      - Router je hlavní část, která řeší, která url (endpoint) odpovídá, jaké funkcinalitě, ta tady funguje tak, že mám object a vše se přidává za náš určený základ (base url). TaTakže když mám:
+                      ```ts
+                      {
+                          "helo": ...,
+                          "auth": {
+                              "login": ...,
+                              "register": ...
+                          }
+                      }
+                      ```
+                      - Tak budu mít třeba: /api/helo, /api/auth/login, /api/auth/register atd...
+                      - Dále teda mám proceduru, což je v podstatě nějaká už daná akce, co se vykoná (jméno jsem převzal z balíčku TRCP, což dělá něco podobného pro NextJS)
 
     - Nyní si můžu vyexporotvat instanci routeru již s nějakýma routama
 
@@ -394,4 +394,164 @@ tree
     - V klientovi nám poté bude řvát typescript, když tam nepošleme to co nemáme. I když budeme typescript ignorovat, tak dostaneme Bad Request response
     - Dá se tady dělat dost dalších věcí, ale ty si řekneme později
 
-- nyní máme nachystanou API, tak pojďme si udělat první nějaký náš endpoint
+- nyní máme nachystanou API, tak pojďme si udělat první nějaký náš endpoint, rovnou můžeme zkusit pracovat na registeru:
+
+```ts
+import { z } from 'zod';
+import { procedure, router } from './api';
+
+export const r = router({
+    auth: {
+        register: procedure.POST.input(
+            z.object({
+                username: z.string(),
+                email: z.string().email(),
+                password: z.string()
+            })
+        ).query(async ({ input }) => {
+            return input;
+        })
+    }
+});
+
+export type AppRouter = typeof r;
+```
+
+- Tento post endpoint pouze vezme data, co jsme mu předali a pošle nám je pryč
+- Pojďme si udělat kód, který bude řešit logiku registrace
+
+```svelte
+<script lang="ts">
+    import Card from '$/components/Card.svelte';
+    import Button from '$/components/Form/Button.svelte';
+    import Entry from '$/components/Form/Entry.svelte';
+    import Input from '$/components/Form/Input.svelte';
+
+    let data = $state<
+        Record<
+            string,
+            {
+                value: string;
+                error?: string;
+            }
+        >
+    >({
+        username: {
+            value: '',
+            error: undefined
+        },
+        email: {
+            value: '',
+            error: undefined
+        },
+        password: {
+            value: '',
+            error: undefined
+        },
+        password2: {
+            value: '',
+            error: undefined
+        }
+    });
+
+    const register = async () => {
+        //At the start remove all errors
+        Object.values(data).forEach((item) => (item.error = undefined));
+
+        if (!data.username.value) {
+            data.username.error = 'Please enter username';
+        }
+        if (!data.email.value) {
+            data.email.error = 'Please enter email';
+        }
+        if (!data.password.value) {
+            data.password.error = 'Please enter password';
+        }
+        if (!data.password2.value) {
+            data.password2.error = 'Please enter password';
+        }
+        if (data.password.value != data.password2.value) {
+            data.password2.error = "Password doesn't match";
+        }
+
+        //check if some errors
+        if (Object.values(data).some((item) => item.error !== undefined)) {
+            return;
+        }
+
+        const response = await API.auth.register(Object.fromEntries(Object.entries(data).map(([key, value]) => [key, value.value])));
+        console.log(response);
+    };
+</script>
+
+<Card class="m-auto grid min-w-[50%] grid-cols-2 gap-2 p-8">
+    <h1 class="col-span-2 mx-auto mb-4 w-max border-b-2 border-b-black font-poppins text-2xl font-bold lg:text-4xl">Register</h1>
+    <Entry id="username" label="Username">
+        <Input id="username" bind:value={data.username.value} />
+    </Entry>
+    <Entry id="email" label="Email">
+        <Input id="email" type="email" bind:value={data.email.value} />
+    </Entry>
+    <Entry id="password" label="Password">
+        <Input id="password" type="password" bind:value={data.password.value} />
+    </Entry>
+    <Entry id="password2" label="Password (again)">
+        <Input id="password2" type="password" bind:value={data.password2.value} />
+    </Entry>
+    <Button onclick={register} class="col-span-2 mx-auto">Register</Button>
+</Card>
+```
+- O errory v inputech se nám stará naše Entry, ale co errory, co nám da API, na to by byl dobrý nějaký Toast (typicky prvek GUI, který se zobrazí nějakou informaci někde jako popup), není to úplně alert, kdy vyskočí uprostřed obrazovky, ale spíše na straně a k tomu využívám SweetAlerts2
+- Pojďme si je nainstalovat
+```bash
+pnpm i sweetalert2
+```
+- Jak se používá
+```ts
+import Swal from "sweetalert2";
+Swal.fire({
+    toast: true,
+    icon: "success",
+    position: "top-end",
+    title: "Ahoj"
+})
+```
+- Tento kód nám zobrazí toast v pravo nahoře, kdy ikonka bude success, text Ahoj a bude tam tlačítko ok
+- V mnoha případech nechceme, aby tam bylo tlačítko, aby tam byl třeba časovač atd..
+- Tím bychom ale v každém tomto zavolání museli všechny vypisovat, proto si na to uděláme funkci:
+```ts
+import Swal, { type SweetAlertOptions } from 'sweetalert2';
+
+export const SwalAlert = async (data: SweetAlertOptions) => {
+    if (!browser) {
+        return {
+            isConfirmed: false
+        };
+    }
+
+    return Swal.fire({
+        toast: true,
+        position: 'top-end',
+        timer: 2000,
+        timerProgressBar: true,
+        showCancelButton: false,
+        showConfirmButton: false,
+        ...data
+    });
+};
+```
+- Tato funkce bere jako parametr options sweet alertu
+- Firene sweet alert s parametry: toast, pozice v pravo nahoře, za 2s zmizne, bude se ukazovat timer, kdy zmizne, nebude se ukazovat Ok button a Cancel button
+- Ostatní optiony, které zadáme se spreadnou a mergnou s aktuálními optiony
+- Ty optiony, které my dáme se přepíšou
+- Proč tam je if !browser? To je z toho důvodu, že když se stránka chce renderovat na serveru, tak server nemá jak zobrazit sweet alert, tak prostě vrátíme nějakou hodnotu, o té později
+- Sweet alerty také supportí třeba ptání se na otázky: Opravdu chcete smazat tento příspěvek? Ano/Ne no a tím že uživatel někdy v budoucnu klikne na button, tak Swal.fire vrací promise a ten se resolve v moment, co uživatel klikne na button, ukážeme si na ukázce. No a my teda v případě, že jsme na serveru vrátíme, že jsme nepotvrdili ten popup.
+- To je naše funkce SwalAlert, použití:
+```ts
+import { SwalAlert } from "$/lib/functions";
+SwalAlert({
+    icon: "success",
+    title: "Úspěšně přihlášen"
+})
+```
+- Jak můžeme vidět, tak použití je o dost jednodušší a píšeme v 99% případů pouze ikonku: "success" | "warning" | "error", a title, což je naše zpráva
