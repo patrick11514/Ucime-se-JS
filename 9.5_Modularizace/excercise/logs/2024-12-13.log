@@ -1,0 +1,149 @@
+[11:43:30:172] [INFO] [Export Example] Patrik 
+[11:43:56:037] [INFO] [Export Example] Patrik12 
+[11:45:26:170] [INFO] [Export Example] Patrik12 
+[11:45:26:174] [INFO] [Export Example] AHOJ 
+[11:45:46:008] [INFO] [Export Example] Patrik12 
+[11:45:46:012] [INFO] [Export Example] AHOJ 
+[11:46:23:509] [INFO] [Export Example] Patrik12 
+[11:46:23:513] [INFO] [Export Example] AHOJ 
+[11:47:34:891] [INFO] [Export Example] Patrik12 
+[11:47:34:894] [INFO] [Export Example] AHOJ 
+[11:47:44:510] [INFO] [Export Example] Patrik12 
+[11:47:44:514] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[11:48:02:534] [INFO] [Export Example] Patrik12 
+[11:48:02:538] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[11:48:02:539] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[11:53:17:713] [INFO] [Export Example] Patrik12 
+[11:53:17:717] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[11:53:17:718] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[11:55:28:206] [INFO] [Export Example] Patrik12 
+[11:55:28:210] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[11:55:28:210] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[11:55:28:216] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[11:55:28:216] [INFO] [Export Example] 55 
+[11:56:33:956] [INFO] [Export Example] Patrik12 
+[11:56:33:961] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[11:56:33:961] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[11:56:33:966] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[11:56:33:966] [INFO] [Export Example] 55 
+[11:57:51:219] [INFO] [Export Example] Patrik12 
+[11:57:51:223] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[11:57:51:224] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[11:57:51:228] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[11:57:51:228] [INFO] [Export Example] 55 
+[11:58:03:066] [INFO] [Export Example] Patrik12 
+[11:58:03:070] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[11:58:03:070] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[11:58:03:074] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[11:58:03:074] [INFO] [Export Example] 55 
+[12:08:38:624] [INFO] [Export Example] Patrik12 
+[12:08:38:627] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[12:08:38:628] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[12:08:38:632] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[12:08:38:632] [INFO] [Export Example] 55 
+[12:08:38:632] [INFO] [Export Example] 25 
+[12:08:38:632] [INFO] [Export Example] Cool Pepa 
+[12:08:38:635] [INFO] [Export Example] {
+    "name": "Bulbasaur",
+    "type": "Water"
+} 
+[12:08:38:636] [INFO] [Export Example] {
+    "name": "Charmander",
+    "type": "Fire"
+} 
+[12:10:35:118] [INFO] [Export Example] Patrik12 
+[12:10:35:122] [INFO] [Export Example] {
+    "name": "Patrik",
+    "alive": true
+} 
+[12:10:35:122] [INFO] [Export Example] {
+    "name": "Květoslav",
+    "alive": true
+} 
+[12:10:35:127] [INFO] [Export Example] {
+    "name": "File with super cool function",
+    "description": "Some description",
+    "cat": true,
+    "andromeda": "approaching"
+} 
+[12:10:35:127] [INFO] [Export Example] 55 
+[12:10:35:127] [INFO] [Export Example] 25 
+[12:10:35:127] [INFO] [Export Example] Cool Pepa 
+[12:10:35:130] [INFO] [Export Example] {
+    "name": "Bulbasaur",
+    "type": "Water"
+} 
+[12:10:35:130] [INFO] [Export Example] {
+    "name": "Charmander",
+    "type": "Fire"
+} 
