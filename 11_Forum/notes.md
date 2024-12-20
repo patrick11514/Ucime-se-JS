@@ -3,6 +3,7 @@
 - Minule jsme si udělali na našem fórum udělali registraci a nyní budeme pokračovat s loginem a logoutem
 - K tomu abychom si mohli uchovat status o přihlášení budeme potřebovat cookies
 - V těchto budeme mít uložený nějaký stav
+- Přidat k inputům atdd set customValdiity
 
 ## Typicky se přihlášení děla věma způsoby
 
