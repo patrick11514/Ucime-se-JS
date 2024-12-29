@@ -7,6 +7,7 @@ import bcrypt from 'bcrypt';
 import { COOKIE_EXPIRE } from '$env/static/private';
 import type { Response, ResponseWithData } from '$/types/response';
 import type { UserData } from '$/types/types';
+import { getPermissions } from '$/lib/server/function';
 
 export default procedure.POST.input(
     z.object({
@@ -34,7 +35,8 @@ export default procedure.POST.input(
 
     const userData = {
         ...data,
-        password: undefined
+        password: undefined,
+        ...(await getPermissions(data.id))
     };
 
     const cookie = jwt.setCookie(userData);
