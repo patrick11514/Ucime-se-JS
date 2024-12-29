@@ -25,11 +25,3 @@ export const SwalAlert = (data: SweetAlertOptions) => {
         ...data
     });
 };
-
-export const setUserState = (userState: UserState) => {
-    setContext('userState', writable(userState));
-};
-
-export const getUserState = () => {
-    return getContext<Writable<UserState>>('userState');
-};

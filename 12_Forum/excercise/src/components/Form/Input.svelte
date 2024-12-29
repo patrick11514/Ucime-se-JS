@@ -4,7 +4,7 @@
 
     let {
         value = $bindable(),
-        class: cls,
+        class: cls = '',
         invalid = $bindable(undefined),
         ...props
     }: HTMLInputAttributes & {
@@ -22,5 +22,5 @@
     bind:this={el}
     {...props}
     bind:value
-    class={twMerge('rounded-md border-2 border-black px-2 py-1 text-lg font-bold text-text outline-none transition-colors duration-500 invalid:border-red-500', cls)}
+    class={twMerge('rounded-md border-2 border-black px-2 py-1 text-lg font-bold text-text outline-none transition-colors duration-500 invalid:border-red-500', cls?.toString())}
 />

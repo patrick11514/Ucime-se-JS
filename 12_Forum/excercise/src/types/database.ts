@@ -9,6 +9,23 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   ? ColumnType<S, I | undefined, U>
   : ColumnType<T, T | undefined, T>;
 
+export interface Group {
+  bg_color: string;
+  id: Generated<number>;
+  name: string;
+  text_color: string;
+}
+
+export interface GroupPermission {
+  group_id: number;
+  permission: string;
+}
+
+export interface UserGroup {
+  group_id: number;
+  user_id: number;
+}
+
 export interface Users {
   email: string;
   id: Generated<number>;
@@ -17,5 +34,8 @@ export interface Users {
 }
 
 export interface DB {
+  group: Group;
+  group_permission: GroupPermission;
+  user_group: UserGroup;
   users: Users;
 }

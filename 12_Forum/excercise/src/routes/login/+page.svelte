@@ -4,10 +4,11 @@
     import Entry from '$/components/Form/Entry.svelte';
     import Input from '$/components/Form/Input.svelte';
     import { API } from '$/lib/api';
-    import { getUserState, SwalAlert } from '$/lib/functions';
+    import { SwalAlert } from '$/lib/functions';
     import { goto } from '$app/navigation';
     import { extractError, matchError } from '$/lib/errors';
     import { page } from '$app/state';
+    import { getState } from '$/lib/state.svelte';
 
     const inputs = ['username', 'password'] as const;
     type Data = Record<
@@ -18,7 +19,7 @@
         }
     >;
 
-    const userState = getUserState();
+    const _state = getState();
 
     let data = $state(Object.fromEntries(inputs.map((input) => [input, { value: '' }])) as Data);
 
@@ -60,10 +61,10 @@
             title: 'Login was successfull'
         });
 
-        userState.set({
+        _state.userState = {
             logged: true,
             data: response.data
-        });
+        };
 
         if (page.url.searchParams.has('next')) {
             goto(page.url.searchParams.get('next')!);

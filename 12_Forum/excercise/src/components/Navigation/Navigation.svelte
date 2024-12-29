@@ -4,8 +4,9 @@
     import Icon from '../Icon.svelte';
     import Dropdown from './Dropdown.svelte';
     import { API } from '$/lib/api';
-    import { getUserState, SwalAlert } from '$/lib/functions';
+    import { SwalAlert } from '$/lib/functions';
     import { page } from '$app/state';
+    import { getState } from '$/lib/state.svelte';
 
     const dropdowns: {
         name: string;
@@ -25,7 +26,7 @@
         }
     ];
 
-    const userState = getUserState();
+    const _state = getState();
 
     const logout = async () => {
         const response = await API.auth.logout();
@@ -42,9 +43,9 @@
             title: 'Successfully logged out'
         });
 
-        userState.set({
+        _state.userState = {
             logged: false
-        });
+        };
     };
 </script>
 
@@ -56,7 +57,7 @@
         {/each}
     </div>
     <div class="flex items-center justify-end gap-2">
-        {#if !$userState.logged}
+        {#if !_state.userState.logged}
             <a href="/register?next={page.url.pathname}" class="flex gap-1 rounded-md px-2 py-1 text-xl font-bold transition-colors duration-200 hover:bg-primary">
                 <Icon name="bi-person-add" />
                 Register
@@ -66,7 +67,7 @@
                 Login
             </a>
         {:else}
-            <Dropdown name={$userState.data.username} icon="bi-person-fill" class="left-1/2 flex min-w-56 -translate-x-1/2 flex-col">
+            <Dropdown name={_state.userState.data.username} icon="bi-person-fill" class="left-1/2 flex min-w-56 -translate-x-1/2 flex-col">
                 Tady budou potom staty uživatele
                 <Button onclick={logout}>Logout</Button>
             </Dropdown>
